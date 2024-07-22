@@ -24,8 +24,9 @@ namespace CMH.Persistence.Migrations
 
             modelBuilder.Entity("CMH.Domain.Entities.Car", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -66,11 +67,11 @@ namespace CMH.Persistence.Migrations
 
             modelBuilder.Entity("CMH.Domain.Entities.CarMaintenanceGarage", b =>
                 {
-                    b.Property<string>("CarId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("CarId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("MaintenanceGarageId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("MaintenanceGarageId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -84,8 +85,8 @@ namespace CMH.Persistence.Migrations
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -99,8 +100,9 @@ namespace CMH.Persistence.Migrations
 
             modelBuilder.Entity("CMH.Domain.Entities.MaintenanceGarage", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -202,18 +204,18 @@ namespace CMH.Persistence.Migrations
                         {
                             Id = "0b72b30a-6053-42b4-99c4-ceebd0cca368",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "87828149-d5da-4736-85fb-11b6848d91ff",
-                            DateCreated = new DateTime(2024, 7, 21, 23, 58, 36, 779, DateTimeKind.Local).AddTicks(8152),
+                            ConcurrencyStamp = "f9e19a55-cbc7-4f08-ab1a-1b5ffd9c0ce3",
+                            DateCreated = new DateTime(2024, 7, 22, 1, 44, 48, 965, DateTimeKind.Local).AddTicks(3515),
                             Email = "hhoury@hotmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Admin",
                             NormalizedEmail = "HHOURY@HOTMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOYuzGrBU7pylRU/7lqX7i3S18+dC7h5tFv95wy5waDWLZQZzYK5/wiUY3KEw6Xlxw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHyDxnygH8iJyUShUe2n1zlwDsLct/k8F/RvK2IOF5DxPC2zuoIjpHbIxiFnACrPug==",
                             PhoneNumber = "+96170040294",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a62d7755-7ab7-4c13-81f6-54da18e98da2",
+                            SecurityStamp = "4dcbbaf8-724b-4484-9b1f-a0376f089a3c",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -221,18 +223,18 @@ namespace CMH.Persistence.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5ee2e31f-a2a1-4434-a537-6113d2ab9308",
-                            DateCreated = new DateTime(2024, 7, 21, 23, 58, 36, 842, DateTimeKind.Local).AddTicks(169),
+                            ConcurrencyStamp = "08dd622e-43f9-47d1-9a82-d88ec523a15e",
+                            DateCreated = new DateTime(2024, 7, 22, 1, 44, 49, 28, DateTimeKind.Local).AddTicks(4147),
                             Email = "owner@localhost.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Name = "Owner",
                             NormalizedEmail = "OWNER@LOCALHOST.COM",
                             NormalizedUserName = "OWNER",
-                            PasswordHash = "AQAAAAIAAYagAAAAED+1JEL6JuFXA5+g+qg9jMy99Q2hMRfr6tMwa+DnYBxKhcqaZtxdAf19EW4g5JIsKw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMcYeV905WhXVZMXr2NrnN3tMLBG16/zbYK6iDyVm5Jlpy63UBL7qdINnroQ9tHo7w==",
                             PhoneNumber = "+96170040294",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f6263284-af20-4109-8b58-09292beae2ad",
+                            SecurityStamp = "c908f25a-eeef-4ad0-ab83-56fdde1ffb6a",
                             TwoFactorEnabled = false,
                             UserName = "owner"
                         });

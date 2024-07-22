@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CMH.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitMig : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -58,7 +58,7 @@ namespace CMH.Persistence.Migrations
                 name: "MaintenanceGarages",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -181,7 +181,7 @@ namespace CMH.Persistence.Migrations
                 name: "Cars",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Make = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
@@ -207,9 +207,9 @@ namespace CMH.Persistence.Migrations
                 name: "CarMaintenanceGarages",
                 columns: table => new
                 {
-                    CarId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    MaintenanceGarageId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CarId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MaintenanceGarageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -247,8 +247,8 @@ namespace CMH.Persistence.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateCreated", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "0b72b30a-6053-42b4-99c4-ceebd0cca368", 0, "87828149-d5da-4736-85fb-11b6848d91ff", new DateTime(2024, 7, 21, 23, 58, 36, 779, DateTimeKind.Local).AddTicks(8152), "hhoury@hotmail.com", true, false, null, "Admin", "HHOURY@HOTMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEOYuzGrBU7pylRU/7lqX7i3S18+dC7h5tFv95wy5waDWLZQZzYK5/wiUY3KEw6Xlxw==", "+96170040294", false, "a62d7755-7ab7-4c13-81f6-54da18e98da2", false, "admin" },
-                    { "1", 0, "5ee2e31f-a2a1-4434-a537-6113d2ab9308", new DateTime(2024, 7, 21, 23, 58, 36, 842, DateTimeKind.Local).AddTicks(169), "owner@localhost.com", true, false, null, "Owner", "OWNER@LOCALHOST.COM", "OWNER", "AQAAAAIAAYagAAAAED+1JEL6JuFXA5+g+qg9jMy99Q2hMRfr6tMwa+DnYBxKhcqaZtxdAf19EW4g5JIsKw==", "+96170040294", false, "f6263284-af20-4109-8b58-09292beae2ad", false, "owner" }
+                    { "0b72b30a-6053-42b4-99c4-ceebd0cca368", 0, "f9e19a55-cbc7-4f08-ab1a-1b5ffd9c0ce3", new DateTime(2024, 7, 22, 1, 44, 48, 965, DateTimeKind.Local).AddTicks(3515), "hhoury@hotmail.com", true, false, null, "Admin", "HHOURY@HOTMAIL.COM", "ADMIN", "AQAAAAIAAYagAAAAEHyDxnygH8iJyUShUe2n1zlwDsLct/k8F/RvK2IOF5DxPC2zuoIjpHbIxiFnACrPug==", "+96170040294", false, "4dcbbaf8-724b-4484-9b1f-a0376f089a3c", false, "admin" },
+                    { "1", 0, "08dd622e-43f9-47d1-9a82-d88ec523a15e", new DateTime(2024, 7, 22, 1, 44, 49, 28, DateTimeKind.Local).AddTicks(4147), "owner@localhost.com", true, false, null, "Owner", "OWNER@LOCALHOST.COM", "OWNER", "AQAAAAIAAYagAAAAEMcYeV905WhXVZMXr2NrnN3tMLBG16/zbYK6iDyVm5Jlpy63UBL7qdINnroQ9tHo7w==", "+96170040294", false, "c908f25a-eeef-4ad0-ab83-56fdde1ffb6a", false, "owner" }
                 });
 
             migrationBuilder.InsertData(

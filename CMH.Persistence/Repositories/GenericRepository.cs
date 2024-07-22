@@ -40,7 +40,7 @@ namespace CMH.Persistence.Repositories
 
         public async Task DeleteAsync(string id)
         {
-            var entity = await GetAsync(id);
+            var entity = await GetAsync(Guid.Parse(id));
 
             if (entity is null)
             {
@@ -53,7 +53,7 @@ namespace CMH.Persistence.Repositories
 
         public async Task<bool> Exists(string id)
         {
-            var entity = await GetAsync(id);
+            var entity = await GetAsync(Guid.Parse(id));
             return entity != null;
         }
 
@@ -72,26 +72,31 @@ namespace CMH.Persistence.Repositories
         }
 
 
-        public async Task<T> GetAsync(string? id)
+        public async Task<T> GetAsync(Guid? id)
         {
             var result = await _context.Set<T>().FindAsync(id);
             if (result is null)
             {
-                throw new NotFoundException(typeof(T).Name, !string.IsNullOrEmpty(id) ? id : "No Key Provided");
+                throw new NotFoundException(typeof(T).Name, id.HasValue ? id : "No Key Provided");
             }
 
             return result;
         }
 
-        public async Task<TResult> GetAsync<TResult>(string? id)
+        public async Task<TResult> GetAsync<TResult>(Guid? id)
         {
             var result = await _context.Set<T>().FindAsync(id);
             if (result is null)
             {
-                throw new NotFoundException(typeof(T).Name, !string.IsNullOrEmpty(id) ? id : "No Key Provided");
+                throw new NotFoundException(typeof(T).Name, id.HasValue ? id : "No Key Provided");
             }
 
             return _mapper.Map<TResult>(result);
+        }
+
+        public Task<T> GetAsync(string? id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task UpdateAsync(T entity)
@@ -100,9 +105,9 @@ namespace CMH.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync<TSource>(string id, TSource source) where TSource : IBaseDto
+        public async Task UpdateAsync<TSource>(Guid id, TSource source) where TSource : IBaseDto
         {
-            if (id != source.Id)
+            if (id != Guid.Parse( source.Id))
             {
                 throw new BadRequestException("Invalid Id used in request");
             }
@@ -118,5 +123,7 @@ namespace CMH.Persistence.Repositories
             _context.Update(entity);
             await _context.SaveChangesAsync();
         }
+
+       
     }
 }
